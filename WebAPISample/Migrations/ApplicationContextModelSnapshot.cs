@@ -28,6 +28,9 @@ namespace WebAPISample.Migrations
                     b.Property<string>("Director")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Genre")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 

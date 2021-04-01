@@ -2,7 +2,7 @@
 
 namespace WebAPISample.Migrations
 {
-    public partial class Initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,6 +13,7 @@ namespace WebAPISample.Migrations
                     MovieId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: true),
+                    Genre = table.Column<string>(nullable: true),
                     Director = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
