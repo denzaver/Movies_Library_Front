@@ -20,7 +20,7 @@ namespace WebAPISample.Controllers
         }
         // GET api/movie
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
             // Retrieve all movies from db logic
             var movies = _context.Movies.ToList();
@@ -33,16 +33,28 @@ namespace WebAPISample.Controllers
         public IActionResult Get(int id)
         {
             // Retrieve movie by id from db logic
+            var movie = _context.Movies.Where(m => m.MovieId == id);
             // return Ok(movie);
-            return Ok();
+            return Ok(movie);
         }
 
         // POST api/movie
         [HttpPost]
-        public IActionResult Post([FromBody]Movie value)
+        public IActionResult Post([FromBody]Movie movie)
         {
+            try
+            {
+                _context.Movies.Add(movie);
+                _context.SaveChanges();
+
+                //return CreatedAtAction(nameof(Get)), new{ id = movie.MovieId }, movie);
+                return Ok();
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err);
+            }
             // Create movie in db logic
-            return Ok();
         }
 
         // PUT api/movie
@@ -50,7 +62,16 @@ namespace WebAPISample.Controllers
         public IActionResult Put([FromBody] Movie movie)
         {
             // Update movie in db logic
-            return Ok();
+            try
+            {
+                _context.Entry(movie).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _context.SaveChanges();
+                return Ok(movie);
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err);
+            }
         }
 
         // DELETE api/movie/5
@@ -58,7 +79,17 @@ namespace WebAPISample.Controllers
         public IActionResult Delete(int id)
         {
             // Delete movie from db logic
-            return Ok();
+            try
+            {
+                var movie = _context.Movies.Where(s => s.MovieId == id).FirstOrDefault();
+                _context.Remove(movie);
+                _context.SaveChanges();
+                return Ok(movie);
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err);
+            }
         }
     }
 }
