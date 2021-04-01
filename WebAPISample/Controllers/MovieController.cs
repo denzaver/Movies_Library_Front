@@ -48,7 +48,7 @@ namespace WebAPISample.Controllers
                 _context.SaveChanges();
 
                 //return CreatedAtAction(nameof(Get)), new{ id = movie.MovieId }, movie);
-                return Ok();
+                return Ok(movie);
             }
             catch (Exception err)
             {
@@ -64,7 +64,7 @@ namespace WebAPISample.Controllers
             // Update movie in db logic
             try
             {
-                _context.Entry(movie).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _context.Update(movie);
                 _context.SaveChanges();
                 return Ok(movie);
             }
