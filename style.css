@@ -1,8 +1,19 @@
-table{
+/* table{
     width: 400px;
 }
 
-
 h1{
     color: blue;
+}
+
+table, th, td{
+    border: 1px solid #000;
+}
+
+th, td{
+    padding: 10px;
+} */
+
+table, th, td{
+    border: 5px solid black;
 }
