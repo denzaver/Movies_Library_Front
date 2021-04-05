@@ -18,7 +18,6 @@ $(function(){
    
 })
 
-
 function populateTable(){
     $("#movies").html("")
     $.get("https://localhost:5001/api/movie", function(data){
@@ -26,7 +25,13 @@ function populateTable(){
 
 
         $.each(data, function(index, el){
-            $("#movies").append('<hi>Test</h1>')
+            $("#movies").append(`<div>
+                <div>${index}</div>
+                <div style="color:blue">Title: ${el.title}</div>
+                <div>Director: ${el.director}</div>
+                <div>Genre: ${el.genre}</div>
+                <button onClick="editMovie(${el.movieId})">Click me!</button>
+                </div><br>`)
         })
         // for(let i = 0; i < data.length;i++){
         //     $("#movies").append(`<div><div>Title: ${data[i].title}</div>
