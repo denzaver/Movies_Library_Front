@@ -53,13 +53,22 @@ function postToList(){
 
         $.each(data, function(){
 
-
-
         })
     })
-
 }
 
+$(function makePutrequest(){
+     $.ajax({
+         url: "https://localhost:5001/api/movie",
+         type: "PUT",
+         dataType:"JSON",
+         success: function(result){
+             console.log(result);
+         },
+        error: function(err){
+            console.log(err)
+        }
+    })
 
 
 function editMovie(id){
