@@ -24,8 +24,8 @@ function populateTable(){
                     <td>${el.title}</td>
                     <td>${el.director}</td>
                     <td>${el.genre}</td>
-                    <td><button onclick=‘editMovie(${el.movieId})’ button class =“btn btn-dark”>Edit</button></td>
-                    <td><button onclick=‘deleteMovie(${el.movieId})’ button class =“btn btn-dark”>Delete</button></td>
+                    <td><button type="button" class="btn btn-warning">Edit An Existing Movie</button></td>
+                    <td><button type="button" class="btn btn-danger">Delete A Movie</button></td>
             </tr>`)
         })
         //  for(let i = 0; i < data.length;i++){

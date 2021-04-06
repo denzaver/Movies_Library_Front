@@ -14,3 +14,6 @@ th, td{
     padding: 10px;
 } */
 
+table, th, td{
+    border: 5px solid black;
+}
