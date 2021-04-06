@@ -1,7 +1,4 @@
 
-
-
-
 $(function(){
     // $.ajax({
     //     url: "https://localhost:5001/api/movie",
@@ -15,7 +12,6 @@ $(function(){
     //     }
     // })
     populateTable()
-   
 })
 
 function populateTable(){
@@ -23,14 +19,14 @@ function populateTable(){
     $.get("https://localhost:5001/api/movie", function(data){
         console.log(data);
 
-
         $.each(data, function(index, el){
             $(".movieData").append(`<tr>
                     <td>${index}</td>
                     <td>${el.title}</td>
                     <td>${el.director}</td>
                     <td>${el.genre}</td>
-                    
+                    <td><button onclick=‘editMovie(${el.movieId})’ button class =“btn btn-dark”>Edit</button></td>
+                    <td><button onclick=‘deleteMovie(${el.movieId})’ button class =“btn btn-dark”>Delete</button></td>
             </tr>`)
         })
         //  for(let i = 0; i < data.length;i++){
@@ -46,6 +42,24 @@ function populateTable(){
     })
 }
 
+function postToTable(){
+    $(".movieData").html('');
+    $.ajax({
+        url: "https://localhost:5001/api/movie",
+        method: "POST",
+        dataType: "JSON",
+        data: {
+            title: $el.title,
+            genre: $el.director,
+            director: $el.genre,
+            
+
+        }
+    })
+
+}
+
+
 function Add(){
     $(".movieData").html("")
     $.get("https://localhost:5001/api/movie", function(data){
@@ -55,7 +69,7 @@ function Add(){
         "<tr>"+
         "<td><input type='text'/></td>"+
         "<td><input type='text'/></td>"+
-        "<td><input type='text'/></td>"
+        "<td><input type='text'/></td></tr>"
         
         );
         $("addBtn").bind("click", Save);
