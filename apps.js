@@ -21,7 +21,6 @@ function populateTable(){
 
         $.each(data, function(index, el){
             $(".movieData").append(`<tr>
-                    <td>${index}</td>
                     <td>${el.title}</td>
                     <td>${el.director}</td>
                     <td>${el.genre}</td>
