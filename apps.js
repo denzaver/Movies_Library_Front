@@ -26,11 +26,11 @@ function populateTable(){
 
         $.each(data, function(index, el){
             $(".movieData").append(`<tr>
+                    <td>${index}</td>
                     <td>${el.title}</td>
                     <td>${el.director}</td>
                     <td>${el.genre}</td>
-                    <td><button type=button
-
+                    <td><button type=button</td>
             </tr>`)
         })
         //  for(let i = 0; i < data.length;i++){
@@ -45,6 +45,21 @@ function populateTable(){
         console.log(err)
     })
 }
+
+function postToList(){
+    $(".movieData").html("")
+    $.put("https://localhost:5001/api/movie", function(data){
+        console.log
+
+        $.each(data, function(){
+
+
+
+        })
+    })
+
+}
+
 
 
 function editMovie(id){
