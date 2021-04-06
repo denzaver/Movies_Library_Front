@@ -30,7 +30,7 @@ function populateTable(){
                     <td>${el.title}</td>
                     <td>${el.director}</td>
                     <td>${el.genre}</td>
-                    <td><button type=button</td>
+                    
             </tr>`)
         })
         //  for(let i = 0; i < data.length;i++){
@@ -46,42 +46,49 @@ function populateTable(){
     })
 }
 
-function postToList(){
+function Add(){
     $(".movieData").html("")
-    $.put("https://localhost:5001/api/movie", function(data){
-        console.log
+    $.get("https://localhost:5001/api/movie", function(data){
+        console.log(data);
 
-        $.each(data, function(){
+    $(".movieData").append(
+        "<tr>"+
+        "<td><input type='text'/></td>"+
+        "<td><input type='text'/></td>"+
+        "<td><input type='text'/></td>"
+        
+        );
+        $("addBtn").bind("click", Save);
+        
+    }
+    )}
 
-        })
-    })
-}
+// function postToList(){
+//     $(".movieData").html("")
+//     $.put("https://localhost:5001/api/movie", function(data){
+//         console.log
 
-$(function makePutrequest(){
-     $.ajax({
-         url: "https://localhost:5001/api/movie",
-         type: "PUT",
-         dataType:"JSON",
-         success: function(result){
-             console.log(result);
-         },
-        error: function(err){
-            console.log(err)
-        }
-    })
+//         $.each(data, function(){
 
+//         })
+//     })
+// }
 
-function editMovie(id){
- console.log(id);
-}
+// $(function makePutrequest(){
+//      $.ajax({
+//          url: "https://localhost:5001/api/movie",
+//          type: "PUT",
+//          dataType:"JSON",
+//          success: function(result){
+//              console.log(result);
+//          },
+//         error: function(err){
+//             console.log(err)
+//         }
+//     })
+// }
 
+// function editMovie(id){
+//  console.log(id);
+// }
 
-/*`<div>
-                <div>${index}</div>
-                <div style="color:red">Title: ${el.title}</div>
-                <div>Director: ${el.director}</div>
-                <div>Genre: ${el.genre}</div>
-                <button onClick="editMovie(${el.movieId})">CLick me!</button>
-                </div><br> 
-                
-        */
