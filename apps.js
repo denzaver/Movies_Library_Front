@@ -12,8 +12,6 @@ $(function(){
     //     }
     // })
     populateTable()
-
-    
 })
 
 function populateTable(){
@@ -68,6 +66,24 @@ function postToTable(data){
     });
 }
 
+//  --------  NEED TO CREATE FOLLOWING EDIT FUNCTION ---------------
+
+// function editMovie(id){
+//  console.log(id);
+// }
+
+function deleteMovie(id){
+    $.ajax({
+        url: "https://localhost:5001/api/movie" + id,
+        type: "DELETE",
+        success: function(id){
+            $(".movieData").remove(id);
+            populateTable();
+        }
+        .fail(function(err){
+            console.log(err)
+    })
+}
 
 // function Add(){
 //     $(".movieData").html("")
@@ -111,7 +127,6 @@ function postToTable(data){
 //     })
 // }
 
-// function editMovie(id){
-//  console.log(id);
-// }
+
+
 
