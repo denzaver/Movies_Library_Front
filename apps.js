@@ -16,10 +16,6 @@ $(function(){
     
 })
 
-$("#newMovBtn").on("click", function(e){
-    $("#newForm").toggle();
-});
-
 function populateTable(){
     $(".movieData").html("")
     $.get("https://localhost:5001/api/movie", function(data){
@@ -47,7 +43,16 @@ function populateTable(){
     })
 }
 
-$("#")
+$("#newMovBtn").on("click", function(e){
+    let data = {
+        Title: $($("#newForm")[0].Title).val(),
+        Genre: $($("#newForm")[0].Genre).val(),
+        Director: $($("#newForm")[0].Director).val(),
+    }
+    postToTable(data);
+    $("newForm").trigger("reset");
+    e.preventDefault();
+});
 
 function postToTable(data){
     $(".movieData").html('');
@@ -59,31 +64,27 @@ function postToTable(data){
         success: function(data){
             console.log(data);
             populateTable()
-        }
-            
-
-        
-    })
-
+        } 
+    });
 }
 
 
-function Add(){
-    $(".movieData").html("")
-    $.get("https://localhost:5001/api/movie", function(data){
-        console.log(data);
+// function Add(){
+//     $(".movieData").html("")
+//     $.get("https://localhost:5001/api/movie", function(data){
+//         console.log(data);
 
-    $(".movieData").append(
-        "<tr>"+
-        "<td><input type='text'/></td>"+
-        "<td><input type='text'/></td>"+
-        "<td><input type='text'/></td></tr>"
+//     $(".movieData").append(
+//         "<tr>"+
+//         "<td><input type='text'/></td>"+
+//         "<td><input type='text'/></td>"+
+//         "<td><input type='text'/></td></tr>"
         
-        );
-        $("addBtn").bind("click", Save);
+//         );
+//         $("addBtn").bind("click", Save);
         
-    }
-    )}
+//     }
+//     )}
 
 // function postToList(){
 //     $(".movieData").html("")
