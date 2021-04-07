@@ -12,7 +12,13 @@ $(function(){
     //     }
     // })
     populateTable()
+
+    
 })
+
+$("#newMovBtn").on("click", function(e){
+    $("#newForm").toggle();
+});
 
 function populateTable(){
     $(".movieData").html("")
@@ -41,19 +47,22 @@ function populateTable(){
     })
 }
 
-function postToTable(){
+$("#")
+
+function postToTable(data){
     $(".movieData").html('');
     $.ajax({
         url: "https://localhost:5001/api/movie",
         method: "POST",
         dataType: "JSON",
-        data: {
-            title: $el.title,
-            genre: $el.director,
-            director: $el.genre,
+        data: data,
+        success: function(data){
+            console.log(data);
+            populateTable()
+        }
             
 
-        }
+        
     })
 
 }

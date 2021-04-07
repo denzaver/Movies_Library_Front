@@ -53,9 +53,24 @@
     <h1 style= "color:rgb(16, 0, 31); font-size:50px; font-family:cursive;  font-weight: bold;">D&R Movie Palace</h1>
 </center>
 <br>
-    <form action="/action_page.php">
-        <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname" value="John"><br>
+    <div class="container">
+        
+    <center>
+        <form id="newForm" >
+            <input type="text" class="form-control" id="Title" name="Title" value="Enter the new movie name here.">
+            <br>
+            <input type="text" class="form-control" id="Genre" name="Genre" value="Enter the movie genre(s) here.">
+            <br>
+            <input type="text" class="form-control" id="Director" name="Director" value="Enter the directors name here.">
+            <br> 
+            <button id="newMovBtn" class="btn btn-primary btn-block">Add New Movie</button>
+        </form>    
+    </center>
+        </div>
+
+    <form id="newForm">
+        <label for="Title">Movie Name:</label><br>
+        <input type="text" id="title" name="fname" value="Enter the new movie name here."><br>
         <label for="lname">Last name:</label><br>
         <input type="text" id="lname" name="lname" value="Doe"><br><br>
         <input type="submit" value="Submit">
